@@ -37,9 +37,10 @@ public class TaskResource {
 
     @PUT
     @Path("/{id}")
-    public void update(@PathParam("id") Long id, Task task) {
+    public Task update(@PathParam("id") Long id, Task task) {
         task.setId(id);
         dao.update(task);
+        return task;
     }
 
     @DELETE

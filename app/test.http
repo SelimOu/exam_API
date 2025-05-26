@@ -20,7 +20,7 @@ GET http://localhost:8080/tasks/1
 ###
 
 ### Mettre à jour une tâche
-PUT http://localhost:8080/tasks/2
+PUT http://localhost:8080/tasks/21
 Content-Type: application/json
 
 {
@@ -32,4 +32,4 @@ Content-Type: application/json
 ###
 
 ### Supprimer une tâche
-DELETE http://localhost:8080/tasks/1
+DELETE http://localhost:8080/tasks/21

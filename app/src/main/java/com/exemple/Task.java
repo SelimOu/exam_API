@@ -5,8 +5,9 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id; 
-
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
 @Entity
 public class Task {
@@ -21,13 +22,24 @@ public class Task {
 
     public Task() {
     }
+    
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
         this.done = false;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
     }
+    
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = null;
+    }
+    
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+    
     public Long getId() {
         return id;
     }
@@ -51,7 +63,6 @@ public class Task {
     }
     public void setDone(boolean done) {
         this.done = done;
-        this.updatedAt = LocalDateTime.now();
     }
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -59,8 +70,12 @@ public class Task {
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+    
+    public void setCreatedAt(LocalDateTime createdAt ){
+        this.createdAt = createdAt;
+     }
+    
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
-    

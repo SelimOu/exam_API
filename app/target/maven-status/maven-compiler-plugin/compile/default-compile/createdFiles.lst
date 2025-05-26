@@ -1,0 +1,5 @@
+com\exemple\App.class
+com\exemple\TaskDAO.class
+com\exemple\TaskResource.class
+com\exemple\ApiApplication.class
+com\exemple\Task.class

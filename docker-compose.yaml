@@ -13,7 +13,7 @@ services:
             - mysql_data:/var/lib/mysql
 
     app:
-        build: ./docker
+        build: ./app
         container_name: app
         depends_on:
             - mysql
@@ -26,3 +26,6 @@ services:
             DB_PASSWORD: password
         ports:
             - 8080:8080
+
+volumes:
+    mysql_data:
